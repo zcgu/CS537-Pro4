@@ -54,6 +54,8 @@ int main(int argc, char *argv[])
     struct sockaddr_in clientaddr;
 
     getargs(&port, &numthreads, &numbuffers, argc, argv);
+    if(numthreads <= 0) exit(0);
+    if(numbuffers <= 0) exit(0);
     int* buffer =(int *) malloc(numbuffers * sizeof(int));
     pthread_mutex_init(&mutexT, NULL);
     pthread_cond_init(&empty, NULL);
